@@ -1,10 +1,11 @@
 {
-  "name": "react-native-international-phone-number",
-  "author": "AstrOOnauta (https://github.com/AstrOOnauta)",
+  "name": "react-native-paper-international-phone-number",
+  "author": "Geckos (https://github.com/geckos-company)",
   "version": "0.7.5",
   "description": "International mobile phone input component with mask for React Native",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "source": "lib/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +14,7 @@
     "ios",
     "android",
     "react-native",
+    "react-native-paper",
     "expo",
     "components",
     "typescript",
@@ -33,15 +35,16 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AstrOOnauta/react-native-international-phone-number.git"
+    "url": "git+https://github.com/geckos-company/react-native-paper-international-phone-number.git"
   },
   "bugs": {
-    "url": "https://github.com/AstrOOnauta/react-native-international-phone-number/issues"
+    "url": "https://github.com/geckos-company/react-native-paper-international-phone-number/issues"
   },
-  "homepage": "https://github.com/AstrOOnauta/react-native-international-phone-number",
+  "homepage": "https://github.com/geckos-company/react-native-paper-international-phone-number",
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-paper": "*"
   },
   "dependencies": {
     "react-native-country-codes-picker": "2.3.3"
