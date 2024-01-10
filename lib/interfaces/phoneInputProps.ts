@@ -11,6 +11,7 @@ import { IPhoneInputRef } from './phoneInputRef';
 
 interface BasePhoneInput extends TextInputProps {
   language?: ILanguage;
+  label?: string;
   placeholder?: string;
   placeholderTextColor?: string;
   selectionColor?: string;
