@@ -7,18 +7,18 @@ import {
   Text,
 } from "react-native-paper";
 import PhoneInput from "react-native-paper-international-phone-number";
-// import { useFonts } from 'expo-font';
+import { useFonts } from 'expo-font';
 
 export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [inputValue, setInputValue] = useState("");
 
   React.useEffect(() => {
-    if (Platform.OS === "web") {
-      useFonts({
-        'TwemojiMozilla': require('./assets/fonts/TwemojiMozilla.woff2'),
-      });
-    }
+    // if (Platform.OS === "web") {
+    //   useFonts({
+    //     'TwemojiMozilla': require('./assets/fonts/TwemojiMozilla.woff2'),
+    //   });
+    // }
   }, []);
 
   function handleInputValue(phoneNumber) {
