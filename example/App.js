@@ -5,29 +5,58 @@ import {
   MD3LightTheme,
   ThemeProvider,
   Text,
+  TextInput,
 } from "react-native-paper";
-import PhoneInput from "react-native-paper-international-phone-number";
-import { useFonts } from 'expo-font';
+// import PhoneInput from "react-native-paper-international-phone-number";
+import PhoneInput from "./lib";
+import { getLocales } from "expo-localization";
+// import { useFonts } from "expo-font";
 
 export default function App() {
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+  const [defaultCountry, setDefaultCountry] = React.useState("");
+  const [selectedCountry, setSelectedCountry] = React.useState(null);
+  const [inputValue, setInputValue] = React.useState("");
+  const ref = React.useRef(null);
 
   React.useEffect(() => {
-    // if (Platform.OS === "web") {
-    //   useFonts({
-    //     'TwemojiMozilla': require('./assets/fonts/TwemojiMozilla.woff2'),
-    //   });
-    // }
+    if (false) {
+      // DeviceCountry.getCountryCode()
+      //   .then(function (country) {
+      //     console.log(country);
+      //     setDefaultCountry(country.code.toUpperCase());
+      //   })
+      //   .catch(e => {
+      //     console.log(e);
+      //   });
+      const locales = getLocales();
+      console.log(locales);
+      setDefaultCountry(locales[0].regionCode);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleInputValue(phoneNumber) {
-    setInputValue(phoneNumber);
-  }
+  React.useEffect(() => {
+    if (inputValue) {
+      console.log(`${selectedCountry?.callingCode} ${inputValue}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCountry, inputValue]);
 
-  function handleSelectedCountry(country) {
+  const handleInputValue = (phoneNumber) => {
+    setInputValue(phoneNumber);
+  };
+
+  const handleSelectedCountry = (country) => {
     setSelectedCountry(country);
-  }
+  };
+
+  React.useEffect(() => {
+    console.log(ref.current.isFocused());
+    if (ref.current) {
+      setTimeout(() => ref.current.forceFocus(), 250);
+      // ref.current.clear();   d
+    }
+  }, [ref.current]);
 
   const theme = MD3DarkTheme;
   // const theme = MD3LightTheme;
@@ -43,12 +72,33 @@ export default function App() {
           backgroundColor: theme.colors.background,
         }}
       >
-        <PhoneInput
+        <TextInput
+          mode="outlined"
+          label={"text"}
+          // ref={ref}
+          style={{ marginBottom: 8 }}
+        />
+        {/* <PhoneInput
           value={inputValue}
           onChangePhoneNumber={handleInputValue}
           selectedCountry={selectedCountry}
           onChangeSelectedCountry={handleSelectedCountry}
           label="Phone"
+        /> */}
+        <PhoneInput
+          inputRef={ref}
+          defaultValue={"+261320000000"}
+          defaultCountry={defaultCountry}
+          // phoneInputStyles={{ input: style }}
+          // value={
+          //   inputValue || value?.replace(selectedCountry?.callingCode, '').trim()
+          // }
+          value={inputValue}
+          onChangePhoneNumber={handleInputValue}
+          selectedCountry={selectedCountry}
+          onChangeSelectedCountry={handleSelectedCountry}
+          // returnKeyType="next"
+          language={"fr"}
         />
         <View style={{ marginTop: 10 }}>
           <Text>
