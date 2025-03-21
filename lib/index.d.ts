@@ -3,6 +3,7 @@ import { ICountry } from './interfaces/country';
 import { ILanguage } from './interfaces/language';
 import { IPhoneInputRef } from './interfaces/phoneInputRef';
 import { PhoneInputProps } from './interfaces/phoneInputProps';
+import { JSX } from 'react';
 
 declare function PhoneInput(props: PhoneInputProps): JSX.Element;
 

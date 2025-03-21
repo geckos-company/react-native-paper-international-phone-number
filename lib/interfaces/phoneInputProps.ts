@@ -1,5 +1,5 @@
 import React, { Ref, ReactNode } from 'react';
-import { TextInputProps } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 
 import { ICountry } from './country';
 import { ICountryCca2 } from './countryCca2';
@@ -32,6 +32,7 @@ interface BasePhoneInput extends TextInputProps {
   modalSearchInputSelectionColor?: string;
   modalNotFoundCountryMessage?: string;
   customCaret?: ReactNode;
+  inputRef?: Ref<TextInput>;
 }
 
 interface IPhoneInputPropsWithoutRef extends BasePhoneInput {
